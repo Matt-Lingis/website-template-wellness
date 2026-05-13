@@ -1,0 +1,114 @@
+/* --- Global Variables (High-Tech Clinical) --- */
+:root {
+    --bg-main: #ffffff; /* Pure Clinical White */
+    --bg-secondary: #f4f4f5; /* Light Tech Gray */
+    --primary-accent: #06b6d4; /* Electric Cyan / Medical Blue */
+    --text-dark: #09090b; /* Pitch Black */
+    --text-muted: #71717a;
+    --border-light: #e4e4e7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif; /* Highly legible, tech-forward font */
+    line-height: 1.6;
+    display: flex; /* Crucial for sidebar layout */
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; filter: blur(5px); }
+    100% { opacity: 1; filter: blur(0); }
+}
+
+h1, h2, h3 { font-weight: 800; letter-spacing: -1px; text-transform: uppercase; }
+
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+
+/* --- Vertical Sidebar Navigation --- */
+.sidebar {
+    position: fixed;
+    top: 0; left: 0; width: 300px; height: 100vh;
+    background: var(--bg-main);
+    border-right: 1px solid var(--border-light);
+    display: flex; flex-direction: column;
+    padding: 50px 40px; z-index: 1000;
+}
+
+.logo { font-size: 2rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 60px; line-height: 1; }
+.logo span { color: var(--primary-accent); display: block; font-size: 1rem; letter-spacing: 4px; margin-top: 5px; }
+
+.nav-links { display: flex; flex-direction: column; gap: 25px; font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+.nav-links a { color: var(--text-muted); position: relative; width: fit-content; }
+.nav-links a:hover, .nav-links a.active { color: var(--text-dark); }
+
+.nav-links a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    display: block; margin-top: 4px; left: 0;
+    background: var(--primary-accent); transition: width 0.3s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.sidebar-footer { margin-top: auto; font-size: 0.8rem; color: var(--text-muted); }
+
+/* --- Main Content Area --- */
+.main-content {
+    margin-left: 300px; /* Offset by sidebar width */
+    width: calc(100% - 300px);
+    min-height: 100vh;
+}
+
+/* --- Buttons --- */
+.btn-solid {
+    background-color: var(--text-dark); color: var(--bg-main);
+    padding: 16px 36px; font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer;
+    display: inline-block; transition: all 0.3s ease;
+}
+.btn-solid:hover { background-color: var(--primary-accent); color: var(--bg-main); transform: translateX(5px); }
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh; background-size: cover; background-position: center;
+    display: flex; align-items: flex-end; padding: 80px 5%; position: relative;
+}
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(9,9,11,0.9) 0%, rgba(9,9,11,0.2) 100%);
+}
+.hero-content { position: relative; z-index: 10; max-width: 800px; color: var(--bg-main); }
+.hero h1 { font-size: 5.5rem; line-height: 0.9; margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; color: #a1a1aa; max-width: 500px; margin-bottom: 40px; }
+
+/* --- Sections & Asymmetrical Grids --- */
+.section-padding { padding: 120px 5%; max-width: 1400px; }
+.section-title { font-size: 4rem; color: var(--text-dark); margin-bottom: 40px; line-height: 1; }
+.accent-line { width: 80px; height: 4px; background-color: var(--primary-accent); margin-bottom: 40px; }
+
+.grid-asymmetric { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+.grid-asymmetric img { width: 100%; height: 600px; object-fit: cover; filter: grayscale(20%); }
+.text-block p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 25px; }
+
+/* --- Clinical Service Cards --- */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; background: var(--border-light); border: 1px solid var(--border-light);}
+.service-card { background: var(--bg-main); padding: 50px 40px; transition: background 0.3s ease; }
+.service-card:hover { background: var(--bg-secondary); cursor: pointer; }
+.service-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--text-dark); }
+.service-card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; }
+.icon-box { width: 50px; height: 50px; background: var(--text-dark); color: var(--bg-main); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 30px; border-radius: 4px;}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 1024px) {
+    body { flex-direction: column; }
+    .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-light); flex-direction: row; justify-content: space-between; align-items: center; padding: 20px 5%; }
+    .logo { margin-bottom: 0; font-size: 1.5rem; }
+    .nav-links { display: none; /* Hidden on mobile for simple template */ }
+    .sidebar-footer { display: none; }
+    .main-content { margin-left: 0; width: 100%; }
+    .hero h1 { font-size: 3.5rem; }
+    .grid-asymmetric { grid-template-columns: 1fr; gap: 40px; }
+    .grid-asymmetric img { height: 400px; }
+}

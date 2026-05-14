@@ -105,10 +105,143 @@ a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
     body { flex-direction: column; }
     .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-light); flex-direction: row; justify-content: space-between; align-items: center; padding: 20px 5%; }
     .logo { margin-bottom: 0; font-size: 1.5rem; }
-    .nav-links { display: none; /* Hidden on mobile for simple template */ }
+    .nav-links { display: none; /* Hidden on tablet for simple template */ }
     .sidebar-footer { display: none; }
     .main-content { margin-left: 0; width: 100%; }
     .hero h1 { font-size: 3.5rem; }
     .grid-asymmetric { grid-template-columns: 1fr; gap: 40px; }
     .grid-asymmetric img { height: 400px; }
+}
+
+@media (max-width: 768px) {
+    body {
+        line-height: 1.55;
+    }
+
+    .sidebar {
+        position: sticky;
+        top: 0;
+        display: block;
+        padding: 15px 16px 12px;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(14px);
+    }
+
+    .logo {
+        font-size: 1.35rem;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+    }
+
+    .logo span {
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+        font-size: 0.72rem;
+        letter-spacing: 0.8px;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links a {
+        flex: 0 0 auto;
+        width: auto;
+        padding: 8px 10px;
+        background: var(--bg-secondary);
+        color: var(--text-dark);
+        border: 1px solid var(--border-light);
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .hero {
+        min-height: 620px;
+        height: auto;
+        padding: 58px 20px;
+        background-position: 58% center;
+    }
+
+    .hero-overlay {
+        background: linear-gradient(to top, rgba(9,9,11,0.92) 0%, rgba(9,9,11,0.18) 100%);
+    }
+
+    .hero h1 {
+        font-size: clamp(3.1rem, 16vw, 4.3rem);
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 28px;
+    }
+
+    .btn-solid {
+        width: 100%;
+        padding: 15px 18px;
+        text-align: center;
+    }
+
+    .section-padding {
+        padding: 66px 20px;
+    }
+
+    .section-title {
+        font-size: clamp(2.35rem, 12vw, 3.1rem);
+        margin-bottom: 28px;
+    }
+
+    .accent-line {
+        width: 58px;
+        height: 3px;
+        margin-bottom: 28px;
+    }
+
+    .grid-asymmetric {
+        gap: 30px;
+    }
+
+    .grid-asymmetric img {
+        height: 310px;
+        order: -1;
+    }
+
+    .text-block p {
+        font-size: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1px;
+    }
+
+    .service-card {
+        padding: 34px 24px;
+    }
+
+    .service-card h3 {
+        font-size: 1.28rem;
+        letter-spacing: 0;
+    }
+
+    .icon-box {
+        margin-bottom: 22px;
+    }
+
+    footer {
+        padding: 64px 20px !important;
+    }
+
+    footer h2 {
+        font-size: clamp(2.1rem, 11vw, 2.8rem) !important;
+    }
 }
